@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+
+  <body bgcolor="red">
+    <section class="calculator">
+      <form>
+        <input type="text" name="answer" id="answer" readonly />
+        <input type="text" name="inputs" id="inputs" placeholder="0" readonly />
+      </form>
+      <table>
+        <tr>
+          <td><input type="button" value="C" onclick="clean()" /></td>
+          <td><input type="button" value="<~" onclick="back()" /></td>
+          <td><input type="button" value="/" onclick="insert('/')" /></td>
+          <td><input type="button" value="x" onclick="insert('*')" /></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="7" onclick="insert(7)" /></td>
+          <td><input type="button" value="8" onclick="insert(8)" /></td>
+          <td><input type="button" value="9" onclick="insert(9)" /></td>
+          <td><input type="button" value="-" onclick="insert('-')" /></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="4" onclick="insert(4)" /></td>
+          <td><input type="button" value="5" onclick="insert(5)" /></td>
+          <td><input type="button" value="6" onclick="insert(6)" /></td>
+          <td><input type="button" value="+" onclick="insert('+')" /></td>
+        </tr>
+        <tr>
+          <td><input type="button" value="1" onclick="insert(1)" /></td>
+          <td><input type="button" value="2" onclick="insert(2)" /></td>
+          <td><input type="button" value="3" onclick="insert(3)" /></td>
+          <td rowspan="2">
+            <input
+              type="button"
+              value="="
+              onclick="equall()"
+              style="height:150px;"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input
+              type="button"
+              value="0"
+              onclick="insert(0)"
+              style="width:150px;"
+            />
+          </td>
+          <td><input type="button" value="." onclick="insert('.')" /></td>
+        </tr>
+      </table>
+    </section>
+
+    <script>
+      let inputs = document.querySelector("#inputs"),
+        answer = document.querySelector("#answer");
+
+      function insert(value) {
+        inputs.value += value;
+      }
+      function clean() {
+        inputs.value = "";
+      }
+      function back() {
+        inputs.value = inputs.value.substring(0, inputs.value.length - 1);
+      }
+      function equall() {
+        if (inputs.value !== "") {
+          answer.value = eval(inputs.value);
+        }
+      }
+    </script>
+  </body>
+</html>
